@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import boardIcon from "../assets/icon-board.svg";
-import boardsSlice from "../redux/boardsSlice";
+import boardsSlice from "../Redux/boardsSlice";
 
 function HeaderDropdown({ setOpenDropdown, setIsBoardModalOpen }) {
   const dispatch = useDispatch();
