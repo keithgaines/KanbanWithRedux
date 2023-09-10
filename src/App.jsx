@@ -6,10 +6,8 @@ function App() {
   return (
     <div>
       <Header />
-      <Center />
     </div>
-  )
-
+  );
 }
 
 export default App;
