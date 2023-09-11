@@ -1,6 +1,6 @@
-import React from "react";
+import PropTypes from "prop-types";
 
-function ElipsisMenu({ type, setOpenEditModal, setOpenDeleteModal }) {
+function EllipsisMenu({ type, setOpenEditModal, setOpenDeleteModal }) {
   return (
     <div
       className={
@@ -32,4 +32,10 @@ function ElipsisMenu({ type, setOpenEditModal, setOpenDeleteModal }) {
   );
 }
 
-export default ElipsisMenu;
+EllipsisMenu.propTypes = {
+  type: PropTypes.string.isRequired, // Example of a required string prop
+  setOpenEditModal: PropTypes.func.isRequired, // Example of a required function prop
+  setOpenDeleteModal: PropTypes.func.isRequired, // Example of a required function prop
+};
+
+export default EllipsisMenu;

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import TaskModal from "../modals/TaskModal";
+import { PropTypes } from "prop-types";
 
 function Task({ colIndex, taskIndex }) {
   const boards = useSelector((state) => state.boards);
@@ -50,5 +51,10 @@ function Task({ colIndex, taskIndex }) {
     </div>
   );
 }
+
+Task.propTypes = {
+  colIndex: PropTypes.number.isRequired, // Example of a required number prop
+  taskIndex: PropTypes.number.isRequired, // Example of a required number prop
+};
 
 export default Task;

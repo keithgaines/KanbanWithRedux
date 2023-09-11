@@ -1,8 +1,9 @@
 import { shuffle } from "lodash";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import boardsSlice from "../redux/boardsSlice";
 import Task from "./Task";
+import PropTypes from "prop-types";
 
 function Column({ colIndex }) {
   const colors = [
@@ -17,18 +18,14 @@ function Column({ colIndex }) {
     "bg-sky-500",
   ];
 
-  
-
   const dispatch = useDispatch();
-  const [color, setColor] = useState(null)
+  const [color, setColor] = useState(null);
   const boards = useSelector((state) => state.boards);
   const board = boards.find((board) => board.isActive === true);
   const col = board.columns.find((col, i) => i === colIndex);
   useEffect(() => {
-    setColor(shuffle(colors).pop())
+    setColor(shuffle(colors).pop());
   }, [dispatch]);
-
-
 
   const handleOnDrop = (e) => {
     const { prevColIndex, taskIndex } = JSON.parse(
@@ -63,5 +60,9 @@ function Column({ colIndex }) {
     </div>
   );
 }
+
+Column.propTypes = {
+  colIndex: PropTypes.number.isRequired, // Example of a required number prop
+};
 
 export default Column;

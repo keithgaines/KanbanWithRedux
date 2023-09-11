@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ElipsisMenu from "../components/ElipsisMenu";
-import elipsis from "../assets/icon-vertical-ellipsis.svg";
+import EllipsisMenu from "../components/EllipsisMenu";
+import Ellipsis from "../assets/icon-vertical-ellipsis.svg";
 import boardsSlice from "../redux/boardsSlice";
 import Subtask from "../components/Subtask";
 import AddEditTaskModal from "./AddEditTaskModal";
@@ -9,7 +9,7 @@ import DeleteModal from "./DeleteModal";
 
 function TaskModal({ taskIndex, colIndex, setIsTaskModalOpen }) {
   const dispatch = useDispatch();
-  const [isElipsisMenuOpen, setIsElipsisMenuOpen] = useState(false);
+  const [isEllipsisMenuOpen, setIsEllipsisMenuOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const boards = useSelector((state) => state.boards);
   const board = boards.find((board) => board.isActive === true);
@@ -61,11 +61,11 @@ function TaskModal({ taskIndex, colIndex, setIsTaskModalOpen }) {
 
   const setOpenEditModal = () => {
     setIsAddTaskModalOpen(true);
-    setIsElipsisMenuOpen(false);
+    setIsEllipsisMenuOpen(false);
   };
 
   const setOpenDeleteModal = () => {
-    setIsElipsisMenuOpen(false);
+    setIsEllipsisMenuOpen(false);
     setIsDeleteModalOpen(true);
   };
 
@@ -82,14 +82,14 @@ function TaskModal({ taskIndex, colIndex, setIsTaskModalOpen }) {
 
           <img
             onClick={() => {
-              setIsElipsisMenuOpen((prevState) => !prevState);
+              setIsEllipsisMenuOpen((prevState) => !prevState);
             }}
-            src={elipsis}
-            alt="elipsis"
+            src={Ellipsis}
+            alt="Ellipsis"
             className=" cursor-pointer h-6"
           />
-          {isElipsisMenuOpen && (
-            <ElipsisMenu
+          {isEllipsisMenuOpen && (
+            <EllipsisMenu
               setOpenEditModal={setOpenEditModal}
               setOpenDeleteModal={setOpenDeleteModal}
               type="Task"

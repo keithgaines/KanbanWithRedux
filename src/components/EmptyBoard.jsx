@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import AddEditBoardModal from "../modals/AddEditBoardModal";
+import PropTypes from "prop-types";
 
 function EmptyBoard({ type }) {
   const [isBoardModalOpen, setIsBoardModalOpen] = useState(false);
@@ -27,5 +28,9 @@ function EmptyBoard({ type }) {
     </div>
   );
 }
+
+EmptyBoard.propTypes = {
+  type: PropTypes.string.isRequired, // Example of a required string prop
+};
 
 export default EmptyBoard;

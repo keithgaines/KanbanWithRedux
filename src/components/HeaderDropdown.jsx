@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Switch } from "@headlessui/react";
 import boardIcon from "../assets/icon-board.svg";
@@ -6,6 +6,7 @@ import useDarkMode from "../hooks/useDarkMode";
 import darkIcon from "../assets/icon-dark-theme.svg";
 import lightIcon from "../assets/icon-light-theme.svg";
 import boardsSlice from "../redux/boardsSlice";
+import PropTypes from "prop-types";
 
 function HeaderDropDown({ setOpenDropdown, setIsBoardModalOpen }) {
   const dispatch = useDispatch();
@@ -97,5 +98,10 @@ function HeaderDropDown({ setOpenDropdown, setIsBoardModalOpen }) {
     </div>
   );
 }
+
+HeaderDropDown.propTypes = {
+  setOpenDropdown: PropTypes.func.isRequired, // Example of a required function prop
+  setIsBoardModalOpen: PropTypes.func.isRequired, // Example of a required function prop
+};
 
 export default HeaderDropDown;
