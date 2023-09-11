@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import PropTypes from "prop-types";
 import crossIcon from "../assets/icon-cross.svg";
 import boardsSlice from "../redux/boardsSlice";
 import { v4 as uuidv4 } from "uuid";
@@ -12,7 +13,6 @@ function AddEditBoardModal({ setIsBoardModalOpen, type }) {
     { name: "Todo", tasks: [], id: uuidv4() },
     { name: "Doing", tasks: [], id: uuidv4() },
   ]);
-  const [isValid, setIsValid] = useState(true);
   const board = useSelector((state) => state.boards).find(
     (board) => board.isActive
   );
@@ -26,20 +26,6 @@ function AddEditBoardModal({ setIsBoardModalOpen, type }) {
     setName(board.name);
     setIsFirstLoad(false);
   }
-
-  const validate = () => {
-    setIsValid(false);
-    if (!name.trim()) {
-      return false;
-    }
-    for (let i = 0; i < newColumns.length; i++) {
-      if (!newColumns[i].name.trim()) {
-        return false;
-      }
-    }
-    setIsValid(true);
-    return true;
-  };
 
   const onChange = (id, newValue) => {
     setNewColumns((prevState) => {
@@ -61,6 +47,11 @@ function AddEditBoardModal({ setIsBoardModalOpen, type }) {
     } else {
       dispatch(boardsSlice.actions.editBoard({ name, newColumns }));
     }
+  };
+
+  AddEditBoardModal.propTypes = {
+    setIsBoardModalOpen: PropTypes.func.isRequired, // Example of a required function prop
+    type: PropTypes.string.isRequired, // Example of a required string prop
   };
 
   return (
@@ -136,8 +127,7 @@ function AddEditBoardModal({ setIsBoardModalOpen, type }) {
             </button>
             <button
               onClick={() => {
-                const isValid = validate();
-                if (isValid === true) onSubmit(type);
+                onSubmit(type);
               }}
               className=" w-full items-center hover:opacity-70 dark:text-white dark:bg-[#635fc7] mt-8 relative  text-white bg-[#635fc7] py-2 rounded-full"
             >

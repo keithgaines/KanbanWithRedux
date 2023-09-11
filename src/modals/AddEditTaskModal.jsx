@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import crossIcon from "../assets/icon-cross.svg";
@@ -14,7 +15,6 @@ function AddEditTaskModal({
 }) {
   const dispatch = useDispatch();
   const [isFirstLoad, setIsFirstLoad] = useState(true);
-  const [isValid, setIsValid] = useState(true);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const board = useSelector((state) => state.boards).find(
@@ -46,7 +46,6 @@ function AddEditTaskModal({
   };
 
   const validate = () => {
-    setIsValid(false);
     if (!title.trim()) {
       return false;
     }
@@ -55,7 +54,6 @@ function AddEditTaskModal({
         return false;
       }
     }
-    setIsValid(true);
     return true;
   };
 
@@ -229,5 +227,14 @@ function AddEditTaskModal({
     </div>
   );
 }
+
+AddEditTaskModal.propTypes = {
+  type: PropTypes.string.isRequired, // Example of a required string prop
+  device: PropTypes.string.isRequired, // Example of a required string prop
+  setIsTaskModalOpen: PropTypes.func.isRequired, // Example of a required function prop
+  setIsAddTaskModalOpen: PropTypes.func.isRequired, // Example of a required function prop
+  taskIndex: PropTypes.number, // Example of an optional number prop
+  prevColIndex: PropTypes.number, // Example of an optional number prop
+};
 
 export default AddEditTaskModal;

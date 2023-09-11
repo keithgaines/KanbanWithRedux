@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import EllipsisMenu from "../components/EllipsisMenu";
 import Ellipsis from "../assets/icon-vertical-ellipsis.svg";
@@ -6,6 +6,7 @@ import boardsSlice from "../redux/boardsSlice";
 import Subtask from "../components/Subtask";
 import AddEditTaskModal from "./AddEditTaskModal";
 import DeleteModal from "./DeleteModal";
+import { PropTypes } from "prop-types";
 
 function TaskModal({ taskIndex, colIndex, setIsTaskModalOpen }) {
   const dispatch = useDispatch();
@@ -67,6 +68,12 @@ function TaskModal({ taskIndex, colIndex, setIsTaskModalOpen }) {
   const setOpenDeleteModal = () => {
     setIsEllipsisMenuOpen(false);
     setIsDeleteModalOpen(true);
+  };
+
+  TaskModal.propTypes = {
+    taskIndex: PropTypes.number.isRequired, // Example of a required number prop
+    colIndex: PropTypes.number.isRequired, // Example of a required number prop
+    setIsTaskModalOpen: PropTypes.func.isRequired, // Example of a required function prop
   };
 
   return (
