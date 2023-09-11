@@ -1,4 +1,3 @@
-```markdown
 # Project README
 
 This README provides an overview of the project along with relevant code snippets and explanations.
@@ -23,25 +22,22 @@ This project is a React-based web application that allows users to manage tasks 
 To run this project locally, follow these steps:
 
 1. Clone the repository:
-```
 
+```shell
 git clone <repository-url>
-
 ```
 
 2. Install dependencies:
-```
 
+```shell
 npm install
-
 ```
 
 3. Start the development server:
-```
 
+```shell
 npm start
-
-````
+```
 
 The application should now be running on your local machine.
 
@@ -57,21 +53,21 @@ Here's a code snippet from `useDarkMode`:
 import { useEffect, useState } from "react";
 
 function useDarkMode() {
-const [theme, setTheme] = useState(localStorage.theme);
-const colorTheme = theme === "dark" ? "light" : "dark";
+  const [theme, setTheme] = useState(localStorage.theme);
+  const colorTheme = theme === "dark" ? "light" : "dark";
 
-useEffect(() => {
- const root = window.document.documentElement;
- root.classList.remove(colorTheme);
- root.classList.add(theme);
- localStorage.setItem("theme", theme);
-}, [theme, colorTheme]);
+  useEffect(() => {
+    const root = window.document.documentElement;
+    root.classList.remove(colorTheme);
+    root.classList.add(theme);
+    localStorage.setItem("theme", theme);
+  }, [theme, colorTheme]);
 
-return [colorTheme, setTheme];
+  return [colorTheme, setTheme];
 }
 
 export default useDarkMode;
-````
+```
 
 ### Redux
 
@@ -126,4 +122,4 @@ In this case, `colIndex` is defined as a required prop of type `number`. If the 
 
 ## Acknowledgements
 
-I would like to extend my gratitude to [Hesam Azizpour](https://www.linkedin.com/in/hesam-azizpour-23259b265/), whose educational content and course on YouTube have been invaluable in helping me gain a better understanding of front-end development and working with Redux. His YouTube course, available [here](https://www.youtube.com/watch?v=3RWMktZNsJQ&t=4820s), served as a valuable reference point during the development of this project. As I continue to focus primarily on backend development, Hesam's expertise and teaching style greatly contributed to my success on this project on the front end.
+I would like to extend my gratitude to [Hesam Azizpour](https://www.linkedin.com/in/hesam-azizpour-23259b265/), whose educational content and course on YouTube have been invaluable in helping me gain a better understanding of front-end development and working with Redux. His YouTube course, available [here](https://www.youtube.com/watch?v=3RWMktZNsJQ&t=4820s), served as a valuable reference point during the development of this project. As I continue to focus primarily on backend development, Hesam's expertise and teaching style greatly contributed to my success in this project on the front end.
