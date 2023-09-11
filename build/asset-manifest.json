@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.a96448e3.css",
-    "main.js": "/static/js/main.b94ae74e.js",
+    "main.css": "/static/css/main.d7fde0b5.css",
+    "main.js": "/static/js/main.bd102369.js",
     "static/media/icon-light-theme.svg": "/static/media/icon-light-theme.b98efecd506358014a7ae1eadb34e36c.svg",
     "static/media/icon-hide-sidebar.svg": "/static/media/icon-hide-sidebar.0e2c68ccd652fb10d8ba0c0c7f3a2f60.svg",
     "index.html": "/index.html",
@@ -13,11 +13,11 @@
     "static/media/icon-cross.svg": "/static/media/icon-cross.d4ca9e0d2a82f7ea4ae08238a42f84ed.svg",
     "static/media/icon-chevron-down.svg": "/static/media/icon-chevron-down.77595c15c9072ba0ef8a21ab5cc8c376.svg",
     "static/media/icon-chevron-up.svg": "/static/media/icon-chevron-up.6918f905519d47589a92103b48580f45.svg",
-    "main.a96448e3.css.map": "/static/css/main.a96448e3.css.map",
-    "main.b94ae74e.js.map": "/static/js/main.b94ae74e.js.map"
+    "main.d7fde0b5.css.map": "/static/css/main.d7fde0b5.css.map",
+    "main.bd102369.js.map": "/static/js/main.bd102369.js.map"
   },
   "entrypoints": [
-    "static/css/main.a96448e3.css",
-    "static/js/main.b94ae74e.js"
+    "static/css/main.d7fde0b5.css",
+    "static/js/main.bd102369.js"
   ]
 }
