@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Logo from "../assets/logo-mobile.svg";
 import iconDown from "../assets/icon-chevron-down.svg";
 import iconUp from "../assets/icon-chevron-up.svg";
@@ -9,7 +9,8 @@ import AddEditTaskModal from "../modals/AddEditTaskModal";
 import AddEditBoardModal from "../modals/AddEditBoardModal";
 import { useDispatch, useSelector } from "react-redux";
 import DeleteModal from "../modals/DeleteModal";
-import boardsSlice from "../Redux/boardsSlice";
+import boardsSlice from "../redux/boardsSlice";
+import PropTypes from "prop-types"; // Import PropTypes
 
 function Header({ setIsBoardModalOpen, isBoardModalOpen }) {
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -142,5 +143,10 @@ function Header({ setIsBoardModalOpen, isBoardModalOpen }) {
     </div>
   );
 }
+
+Header.propTypes = {
+  setIsBoardModalOpen: PropTypes.func.isRequired, // Example of a required function prop
+  isBoardModalOpen: PropTypes.bool.isRequired, // Example of a required boolean prop
+};
 
 export default Header;
