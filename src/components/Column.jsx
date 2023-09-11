@@ -17,14 +17,18 @@ function Column({ colIndex }) {
     "bg-sky-500",
   ];
 
+  
+
   const dispatch = useDispatch();
-  const [color, setColor] = useState(null);
+  const [color, setColor] = useState(null)
   const boards = useSelector((state) => state.boards);
   const board = boards.find((board) => board.isActive === true);
   const col = board.columns.find((col, i) => i === colIndex);
   useEffect(() => {
-    setColor(shuffle(colors).pop());
+    setColor(shuffle(colors).pop())
   }, [dispatch]);
+
+
 
   const handleOnDrop = (e) => {
     const { prevColIndex, taskIndex } = JSON.parse(
