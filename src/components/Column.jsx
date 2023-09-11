@@ -62,7 +62,7 @@ function Column({ colIndex }) {
 }
 
 Column.propTypes = {
-  colIndex: PropTypes.number.isRequired, // Example of a required number prop
+  colIndex: PropTypes.number.isRequired,
 };
 
 export default Column;
