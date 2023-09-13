@@ -1,4 +1,4 @@
-# Project README
+# Kanban with Redux Web App
 
 This README provides an overview of the project along with relevant code snippets and explanations.
 
