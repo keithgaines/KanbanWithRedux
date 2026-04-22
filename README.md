@@ -1,57 +1,71 @@
-# Kanban with Redux Web App
+# Kanban Web App (Redux)
 
-This README provides an overview of the project along with relevant code snippets and explanations.
+React-based task management application demonstrating predictable state management using Redux, component-driven UI design, and persistent client-side state.
 
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Getting Started](#getting-started)
-- [Usage](#usage)
-- [Redux](#redux)
-- [PropTypes Validation](#proptypes-validation)
-- [Acknowledgements](#acknowledgements)
+Live: https://kanban-redux.vercel.app/  
+Code: https://github.com/keithgaines/kanban_redux
 
 ---
 
-## Introduction
+## Overview
 
-This project is a React-based web application that allows users to manage tasks on a digital board. It incorporates features like task drag-and-drop, dark mode functionality, and utilizes Redux for state management.
+This project implements a Kanban-style task management system designed to explore scalable frontend state architecture using Redux.
 
-## Getting Started
+Key focus areas:
+- Centralized state management with Redux
+- UI state synchronization across multiple board columns
+- Persistent theme handling (dark mode)
+- Component-driven architecture in React
 
-To run this project locally, follow these steps:
+---
 
-1. Clone the repository:
+## Features
 
-```shell
-git clone <repository-url>
-```
+- Drag-and-drop task management across columns
+- Persistent dark mode with local storage
+- Board and task state managed via Redux
+- Modular component structure
+- Responsive UI layout
 
-2. Install dependencies:
+---
 
-```shell
-npm install
-```
+## Technical Stack
 
-3. Start the development server:
+- React
+- Redux Toolkit
+- JavaScript (ES6+)
+- CSS / UI styling
+- LocalStorage (theme persistence)
 
-```shell
-npm start
-```
+---
 
-The application should now be running on your local machine.
+## State Management (Redux)
 
-## Usage
+### Dispatching Actions
 
-### Dark Mode
-
-The project includes a `useDarkMode` custom hook to enable dark mode functionality. This hook manages the application's theme, toggling between "dark" and "light" modes. It uses local storage to persist the selected theme.
-
-Here's a code snippet from `useDarkMode`:
+State updates are handled through Redux actions dispatched from UI components:
 
 ```javascript
-import { useEffect, useState } from "react";
+dispatch(
+  boardsSlice.actions.dragTask({
+    colIndex,
+    prevColIndex,
+    taskIndex,
+  })
+);
+```
+Accessing Global State
 
+Components subscribe to global state using useSelector:
+```
+const boards = useSelector((state) => state.boards);
+```
+This ensures UI remains consistent with application state without prop drilling.
+
+## Dark Mode Implementation
+
+Theme state is managed via a custom hook with persistence in local storage:
+```javascript
 function useDarkMode() {
   const [theme, setTheme] = useState(localStorage.theme);
   const colorTheme = theme === "dark" ? "light" : "dark";
@@ -65,61 +79,34 @@ function useDarkMode() {
 
   return [colorTheme, setTheme];
 }
-
-export default useDarkMode;
 ```
+---
 
-### Redux
+## Component Design Notes
 
-Redux is used for state management in this project. It provides two key functions for interacting with the global state: `useDispatch` and `useSelector`.
+- Column and Task components are decoupled from global state logic  
+- Redux slice handles board-level mutations  
+- UI updates are derived from state rather than direct DOM manipulation  
 
-#### `useDispatch`
+---
 
-The `useDispatch` hook is used to dispatch actions to the Redux store. It allows components to trigger state changes by dispatching actions to reducers. In the code snippet below, `dispatch` is used to dispatch a `dragTask` action:
+## Key Engineering Decisions
 
-```javascript
-import { useDispatch } from "react-redux";
-import boardsSlice from "../redux/boardsSlice";
+- Chose Redux to manage cross-column drag-and-drop state complexity  
+- Used local storage for lightweight persistence instead of backend dependency  
+- Structured state to support future extension (multi-board scaling)  
 
-// ...
+---
 
-const dispatch = useDispatch();
+## What This Project Demonstrates
 
-// ...
+- State architecture using Redux in real UI flows  
+- Managing non-trivial UI interactions (drag-and-drop)  
+- Separation of UI components and state logic  
+- Persistence patterns in frontend applications  
 
-dispatch(boardsSlice.actions.dragTask({ colIndex, prevColIndex, taskIndex }));
-```
+---
 
-#### `useSelector`
+## Attribution
 
-The `useSelector` hook is used to access the state from the Redux store. It allows components to subscribe to specific pieces of state and receive updates when that state changes. In the code snippet below, `useSelector` is used to retrieve the `boards` state:
-
-```javascript
-import { useSelector } from "react-redux";
-
-// ...
-
-const boards = useSelector((state) => state.boards);
-```
-
-## PropTypes Validation
-
-The code includes PropTypes validation to ensure that the expected props are passed to the `Column` component. PropTypes help catch errors and provide meaningful warnings during development.
-
-Here's an example of PropTypes validation for the `colIndex` prop in the `Column` component:
-
-```javascript
-import PropTypes from "prop-types";
-
-// ...
-
-Column.propTypes = {
-  colIndex: PropTypes.number.isRequired,
-};
-```
-
-In this case, `colIndex` is defined as a required prop of type `number`. If the `colIndex` prop is not provided or is of the wrong type, a warning will be shown during development, helping to catch potential issues early in the development process.
-
-## Acknowledgements
-
-I would like to extend my gratitude to [Hesam Azizpour](https://www.linkedin.com/in/hesam-azizpour-23259b265/), whose educational content and course on YouTube have been invaluable in helping me gain a better understanding of front-end development and working with Redux. His YouTube course, available [here](https://www.youtube.com/watch?v=3RWMktZNsJQ&t=4820s), served as a valuable reference point during the development of this project. As I continue to focus primarily on backend development, Hesam's expertise and teaching style greatly contributed to my success in this project on the front end.
+This project was developed as part of a learning exercise focused on Redux and modern React state management patterns.
