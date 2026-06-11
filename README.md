@@ -1,49 +1,48 @@
-# Kanban Web App (Redux)
+# Kanban Web App
 
-React-based task management application demonstrating predictable state management using Redux, component-driven UI design, and persistent client-side state.
+Task management application built with React and Redux.
 
-Live: https://kanban-redux.vercel.app/  
-Code: https://github.com/keithgaines/kanban_redux
+The project demonstrates frontend state management, drag-and-drop workflows, persistent UI preferences, and component-driven application structure.
+
+**Live Application:** https://kanban-redux.vercel.app
+
+**Repository:** https://github.com/keithgaines/kanban_redux
 
 ---
 
 ## Overview
 
-This project implements a Kanban-style task management system designed to explore scalable frontend state architecture using Redux.
+This application provides a Kanban-style task board where users can manage tasks across multiple workflow columns.
 
-Key focus areas:
-- Centralized state management with Redux
-- UI state synchronization across multiple board columns
-- Persistent theme handling (dark mode)
-- Component-driven architecture in React
+The project focuses on predictable state management using Redux and demonstrates how frontend applications can manage complex UI interactions without relying on a backend service.
 
 ---
 
 ## Features
 
-- Drag-and-drop task management across columns
-- Persistent dark mode with local storage
-- Board and task state managed via Redux
-- Modular component structure
-- Responsive UI layout
+* Drag-and-drop task movement across columns
+* Centralized board state using Redux
+* Persistent dark mode using local storage
+* Modular React component structure
+* Responsive layout
 
 ---
 
-## Technical Stack
+## Tech Stack
 
-- React
-- Redux Toolkit
-- JavaScript (ES6+)
-- CSS / UI styling
-- LocalStorage (theme persistence)
+* React
+* Redux Toolkit
+* JavaScript
+* CSS
+* LocalStorage
 
 ---
 
-## State Management (Redux)
+## State Management
 
-### Dispatching Actions
+Application state is centralized through Redux.
 
-State updates are handled through Redux actions dispatched from UI components:
+Board updates, task movement, and column changes are handled through dispatched actions rather than direct component-level mutation.
 
 ```javascript
 dispatch(
@@ -54,59 +53,39 @@ dispatch(
   })
 );
 ```
-Accessing Global State
 
-Components subscribe to global state using useSelector:
-```
+Components read shared state using `useSelector`, keeping the UI synchronized with the Redux store.
+
+```javascript
 const boards = useSelector((state) => state.boards);
 ```
-This ensures UI remains consistent with application state without prop drilling.
-
-## Dark Mode Implementation
-
-Theme state is managed via a custom hook with persistence in local storage:
-```javascript
-function useDarkMode() {
-  const [theme, setTheme] = useState(localStorage.theme);
-  const colorTheme = theme === "dark" ? "light" : "dark";
-
-  useEffect(() => {
-    const root = window.document.documentElement;
-    root.classList.remove(colorTheme);
-    root.classList.add(theme);
-    localStorage.setItem("theme", theme);
-  }, [theme, colorTheme]);
-
-  return [colorTheme, setTheme];
-}
-```
----
-
-## Component Design Notes
-
-- Column and Task components are decoupled from global state logic  
-- Redux slice handles board-level mutations  
-- UI updates are derived from state rather than direct DOM manipulation  
 
 ---
 
-## Key Engineering Decisions
+## Architecture Notes
 
-- Chose Redux to manage cross-column drag-and-drop state complexity  
-- Used local storage for lightweight persistence instead of backend dependency  
-- Structured state to support future extension (multi-board scaling)  
-
----
-
-## What This Project Demonstrates
-
-- State architecture using Redux in real UI flows  
-- Managing non-trivial UI interactions (drag-and-drop)  
-- Separation of UI components and state logic  
-- Persistence patterns in frontend applications  
+* Redux manages board-level state and task movement
+* Components remain focused on rendering and user interaction
+* LocalStorage handles lightweight theme persistence
+* State updates are driven through predictable actions
+* Structure supports future extension into multi-board or backend-backed workflows
 
 ---
 
-## Attribution
+## What This Demonstrates
 
-This project was developed as part of a learning exercise focused on Redux and modern React state management patterns.
+* Frontend state architecture
+* Redux-based workflow management
+* Drag-and-drop UI behavior
+* Component separation
+* Persistent client-side preferences
+
+---
+
+## Future Enhancements
+
+* Backend persistence
+* User authentication
+* Multi-board support
+* Task labels and priorities
+* Due dates and assignment
